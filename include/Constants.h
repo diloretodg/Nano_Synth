@@ -1,9 +1,8 @@
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#pragma once
 
 #define TIMER_GROUP 0
 #define TIMER_DIVIDER 80
 #define TIMER_INTERVAL 50
-#define DAC_CHANNEL_1 DAC1_CHANNEL_1
-
-#endif
+#define DAC_CHANNEL_1 DAC_CHANNEL_1
+#define AUDIO_BUFFER_SIZE 256
+#define MAX_STEPS 16
