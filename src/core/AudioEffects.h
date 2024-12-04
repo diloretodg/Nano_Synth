@@ -1,4 +1,5 @@
 // src/core/AudioEffects.h
+#include "../../include/Constants.h"
 
 class Effects {
 private:

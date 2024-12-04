@@ -60,6 +60,17 @@ void setupTimer() {
 
 hw_timer_t* timer = nullptr;
 
+void setupTimer() {
+    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
+    if (timer == nullptr) {
+        Serial.println("Timer setup failed");
+        return;
+    }
+    timerAttachInterrupt(timer, &onTimer, true);
+    timerAlarmWrite(timer, TIMER_INTERVAL, true);
+    timerAlarmEnable(timer);
+}
+
 void IRAM_ATTR onTimer() {
     static portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
     portENTER_CRITICAL_ISR(&timerMux);
@@ -71,17 +82,6 @@ void IRAM_ATTR onTimer() {
     }
 
     portEXIT_CRITICAL_ISR(&timerMux);
-}
-
-void setupTimer() {
-    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-    timerAttachInterrupt(timer, &onTimer, true);
-    timerAlarmWrite(timer, TIMER_INTERVAL, true);
-    timerAlarmEnable(timer);
 }
 
 void setup() {
@@ -114,25 +114,6 @@ void enterErrorState() {
         // Error state loop
     }
 }
-
-    // Create timer on timer group 0 with alarm disabled
-    timer = timerBegin(0, prescaler, false);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-
-    // Attach interrupt handler
-    timerWrite(timer, 0);
-    timerStart(timer);
-    timerAttachInterrupt(timer, &onTimer);
-
-    // Set timer interval (1 second / SAMPLE_RATE)
-    uint64_t timerInterval = (1000000ULL / SAMPLE_RATE); // in microseconds
-    timerSetAutoReload(timer, true);
-    timerSetDivider(timer, prescaler);
-    timerSetAlarmValue(timer, timerInterval);
-    timerAlarm(timer, true);
 
     // Initialize display
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
