@@ -87,12 +87,33 @@ void setupTimer() {
 void setup() {
     Serial.begin(115200);
 
-    // Initialize DAC
-    setupDAC();
+    // Timer setup
+    TCCR1A = 0;
+    TCCR1B = (1 << WGM12) | (1 << CS11); // CTC mode, prescaler 8
+    OCR1A = TIMER_COMPARE_VALUE;
+    TIMSK1 |= (1 << OCIE1A);
 
-    // Initialize timer with correct frequency
-    uint32_t timerFreq = 80000000; // 80MHz
-    uint32_t prescaler = timerFreq / SAMPLE_RATE;
+    // Error handling
+    bool initSuccess = true;
+    initSuccess &= initDAC();
+    initSuccess &= initDisplay();
+    if (!initSuccess) {
+        enterErrorState();
+    }
+}
+
+ISR(TIMER1_COMPA_vect) {
+    // Timer interrupt handler
+    processAudio();
+}
+
+void enterErrorState() {
+    // Error handling implementation
+    digitalWrite(LED_BUILTIN, HIGH);
+    while(1) {
+        // Error state loop
+    }
+}
 
     // Create timer on timer group 0 with alarm disabled
     timer = timerBegin(0, prescaler, false);
