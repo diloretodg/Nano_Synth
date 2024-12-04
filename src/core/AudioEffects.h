@@ -1,11 +1,20 @@
-// src/core/AudioEffects.h
-#include "../../include/Constants.h"
+// AudioEffects.h
+#ifndef AUDIO_EFFECTS_H
+#define AUDIO_EFFECTS_H
+
+class AntiAliasingFilter {
+    float prevSample = 0.0f;
+public:
+    float process(float input);
+};
 
 class Effects {
-private:
-    static constexpr size_t MAX_EFFECTS = 8;
-    static std::array<Effect, MAX_EFFECTS> effectBuffer;
-    static constexpr size_t MAX_DELAY_SAMPLES = 4096;
-    std::array<float, MAX_DELAY_SAMPLES> delayBuffer;
+    float delay[4096] = {0};
     size_t delayIndex = 0;
     float feedback = 0.3f;
+public:
+    float processDelay(float input);
+    void setFeedback(float value);
+};
+
+#endif
