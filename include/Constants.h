@@ -3,16 +3,15 @@
 #define CONSTANTS_H
 
 #include "driver/dac.h"
+#include "driver/timer.h"
 
 // Audio Constants
 constexpr uint32_t SAMPLE_RATE = 44100;
 constexpr uint16_t AUDIO_BUFFER_SIZE = 256;
-
-// Timer Constants
 constexpr uint8_t TIMER_GROUP = 0;
 constexpr uint8_t TIMER_NUMBER = 0;
-constexpr uint32_t TIMER_DIVIDER = 80;  // 80MHz / 80 = 1MHz
-constexpr uint32_t TIMER_SCALE = 1000000;  // 1MHz = 1,000,000 microseconds
+constexpr uint32_t TIMER_DIVIDER = 80;
+constexpr uint32_t TIMER_SCALE = 1000000;
 
 constexpr float MIN_FREQUENCY = 20.0f;
 constexpr float MAX_FREQUENCY = 20000.0f;
