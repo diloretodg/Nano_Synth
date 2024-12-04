@@ -12,6 +12,32 @@
 
 hw_timer_t* timer = nullptr;
 
+void setupDAC() {
+    dac_output_enable(DAC_CHANNEL_1);
+    dac_output_voltage(DAC_CHANNEL_1, 0);
+}
+
+void setupTimer() {
+    timer = timerBegin(0, 80, true);
+    timerAttachInterrupt(timer, &onTimer, true);
+    uint64_t alarmValue = 1000000 / SAMPLE_RATE;
+    timerAlarmWrite(timer, alarmValue, true);
+    timerAlarmEnable(timer);
+}
+
+void IRAM_ATTR onTimer() {
+    static portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
+    portENTER_CRITICAL_ISR(&timerMux);
+    
+    if (sequencer) {
+        float sample = sequencer->generateSample();
+        uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
+        dac_output_voltage(DAC_CHANNEL_1, dacValue);
+    }
+    
+    portEXIT_CRITICAL_ISR(&timerMux);
+}
+
 // Global objects
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 Encoder encoder(ENCODER_PIN_A, ENCODER_PIN_B);
@@ -77,23 +103,7 @@ void setup() {
     Serial.begin(115200);
     setupDAC();
     setupTimer();
-    // ... rest of the existing setup code ...
-}
 
-ISR(TIMER1_COMPA_vect) {
-    // Timer interrupt handler
-    processAudio();
-}
-
-void enterErrorState() {
-    // Error handling implementation
-    digitalWrite(LED_BUILTIN, HIGH);
-    while(1) {
-        // Error state loop
-    }
-}
-
-    // Initialize display
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
         Serial.println(F("SSD1306 allocation failed"));
         for(;;);
