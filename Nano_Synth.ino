@@ -5,10 +5,12 @@
 #include <Adafruit_SSD1306.h>
 #include <Encoder.h>
 #include "driver/dac.h"
-#include "soc/rtc.h"
+#include "driver/timer.h"
 #include "Constants.h"
 #include "Definitions.h"
 #include "GenerativeSequencer.h"
+
+hw_timer_t* timer = nullptr;
 
 // Global objects
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -23,37 +25,24 @@ float audioBuffer[AUDIO_BUFFER_SIZE];
 size_t bufferIndex = 0;
 
 void setupDAC() {
-    esp_err_t err;
-    err = dac_output_enable(DAC_CHANNEL_1);
-    if (err != ESP_OK) {
-        Serial.println("DAC1 output enable failed");
-        return;
-    }
-    err = dac_output_voltage(DAC_CHANNEL_1, 0);
-    if (err != ESP_OK) {
-        Serial.println("DAC1 output voltage failed");
-        return;
-    }
+    dac_output_enable(DAC_CHANNEL_1);
+    dac_output_voltage(DAC_CHANNEL_1, 0);
 }
 
 void setupTimer() {
-    uint32_t apb_freq = APB_CLK_FREQ;
-    uint32_t prescaler = 2;
-    uint32_t timer_divider = (apb_freq / prescaler) / SAMPLE_RATE;
-
-    timer = timerBegin(TIMER_GROUP, TIMER_NUMBER, prescaler);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-
+    timer = timerBegin(TIMER_NUMBER, TIMER_DIVIDER, true);
     timerAttachInterrupt(timer, &onTimer, true);
-
-    uint64_t alarm_value = (apb_freq / prescaler) / SAMPLE_RATE;
-    timerAlarmWrite(timer, alarm_value, true);
-
+    uint64_t alarmValue = TIMER_SCALE / SAMPLE_RATE;
+    timerAlarmWrite(timer, alarmValue, true);
     timerAlarmEnable(timer);
-    timerStart(timer);
+}
+
+void IRAM_ATTR onTimer() {
+    if (sequencer) {
+        float sample = sequencer->generateSample();
+        uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
+        dac_output_voltage(DAC_CHANNEL_1, dacValue);
+    }
 }
 
 #include "include/Constants.h"
@@ -86,20 +75,9 @@ void IRAM_ATTR onTimer() {
 
 void setup() {
     Serial.begin(115200);
-
-    // Timer setup
-    TCCR1A = 0;
-    TCCR1B = (1 << WGM12) | (1 << CS11); // CTC mode, prescaler 8
-    OCR1A = TIMER_COMPARE_VALUE;
-    TIMSK1 |= (1 << OCIE1A);
-
-    // Error handling
-    bool initSuccess = true;
-    initSuccess &= initDAC();
-    initSuccess &= initDisplay();
-    if (!initSuccess) {
-        enterErrorState();
-    }
+    setupDAC();
+    setupTimer();
+    // ... rest of the existing setup code ...
 }
 
 ISR(TIMER1_COMPA_vect) {
