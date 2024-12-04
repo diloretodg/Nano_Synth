@@ -15,8 +15,13 @@ constexpr float SEMITONE_RATIO = 1.059463094359f;
 #define DAC_CHANNEL DAC_CHANNEL_1
 
 // Timer Configuration
-constexpr uint32_t TIMER_DIVIDER = 2;
-constexpr uint32_t TIMER_SCALE = 40000000;
-constexpr uint32_t ALARM_VALUE = TIMER_SCALE / SAMPLE_RATE;
+#define TIMER_PRESCALER 8
+#define TIMER_COMPARE_VALUE 249 // For 16MHz clock, 8 prescaler, 8kHz sampling
+#define TIMER_INTERRUPT_FREQ 8000
+
+// Memory Constants
+#define MAX_SEQUENCE_LENGTH 64
+#define MAX_PRESETS 16
+#define EEPROM_WEAR_LEVEL_BLOCKS 4
 
 #endif
