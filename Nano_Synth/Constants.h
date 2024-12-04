@@ -36,8 +36,9 @@ constexpr float DEFAULT_VOLUME = 0.75f;
 constexpr uint8_t DAC_CHANNEL_1 = 0;
 
 // Timer settings
-constexpr int TIMER_GROUP = 0;
-constexpr int TIMER_NUMBER = 0;
+constexpr uint8_t TIMER_GROUP = 0;
+constexpr uint8_t TIMER_NUMBER = 0;
+constexpr uint32_t APB_CLK_FREQ = 80000000;
 
 // Timing Constants
 constexpr uint16_t DISPLAY_UPDATE_INTERVAL = 50;  // milliseconds

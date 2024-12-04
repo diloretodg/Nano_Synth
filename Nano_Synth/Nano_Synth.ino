@@ -22,30 +22,45 @@ volatile bool audioBufferReady = false;
 float audioBuffer[AUDIO_BUFFER_SIZE];
 size_t bufferIndex = 0;
 
-// Initialize DAC
 void setupDAC() {
     esp_err_t err;
-
-    // Initialize DAC
-    err = dac_output_enable(DAC_CHANNEL);
+    err = dac_output_enable(DAC_CHANNEL_1);
     if (err != ESP_OK) {
-        Serial.println("DAC output enable failed");
+        Serial.println("DAC1 output enable failed");
         return;
     }
-
-    err = dac_output_voltage(DAC_CHANNEL, 0);
+    err = dac_output_voltage(DAC_CHANNEL_1, 0);
     if (err != ESP_OK) {
-        Serial.println("DAC output voltage failed");
+        Serial.println("DAC1 output voltage failed");
         return;
     }
 }
 
-// Timer interrupt handler
+void setupTimer() {
+    uint32_t apb_freq = APB_CLK_FREQ;
+    uint32_t prescaler = 2;
+    uint32_t timer_divider = (apb_freq / prescaler) / SAMPLE_RATE;
+
+    timer = timerBegin(TIMER_GROUP, TIMER_NUMBER, prescaler);
+    if (timer == nullptr) {
+        Serial.println("Timer setup failed");
+        return;
+    }
+
+    timerAttachInterrupt(timer, &onTimer, true);
+
+    uint64_t alarm_value = (apb_freq / prescaler) / SAMPLE_RATE;
+    timerAlarmWrite(timer, alarm_value, true);
+
+    timerAlarmEnable(timer);
+    timerStart(timer);
+}
+
 void IRAM_ATTR onTimer() {
     if (sequencer) {
         float sample = sequencer->generateSample();
         uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
-        dac_output_voltage(DAC_CHANNEL, dacValue);
+        dac_output_voltage(DAC_CHANNEL_1, dacValue);
     }
 }
 
