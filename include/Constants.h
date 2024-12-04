@@ -15,8 +15,11 @@ constexpr float SEMITONE_RATIO = 1.059463094359f;
 #define DAC_CHANNEL DAC_CHANNEL_1
 
 // Timer Configuration
-constexpr uint32_t TIMER_DIVIDER = 2;
-constexpr uint32_t TIMER_SCALE = 40000000;
-constexpr uint32_t ALARM_VALUE = TIMER_SCALE / SAMPLE_RATE;
+constexpr uint8_t TIMER_GROUP = 0;
+constexpr uint8_t TIMER_NUMBER = 0;
+constexpr uint32_t APB_CLK_FREQ = 80000000;
+constexpr uint32_t TIMER_DIVIDER = 80;
+constexpr uint32_t TIMER_SCALE = APB_CLK_FREQ / TIMER_DIVIDER;
+constexpr uint64_t TIMER_INTERVAL = (1000000ULL * TIMER_DIVIDER) / SAMPLE_RATE;
 
 #endif
