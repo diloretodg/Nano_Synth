@@ -115,24 +115,14 @@ void enterErrorState() {
     }
 }
 
-    // Create timer on timer group 0 with alarm disabled
-    timer = timerBegin(0, prescaler, false);
+    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
         return;
     }
-
-    // Attach interrupt handler
-    timerWrite(timer, 0);
-    timerStart(timer);
-    timerAttachInterrupt(timer, &onTimer);
-
-    // Set timer interval (1 second / SAMPLE_RATE)
-    uint64_t timerInterval = (1000000ULL / SAMPLE_RATE); // in microseconds
-    timerSetAutoReload(timer, true);
-    timerSetDivider(timer, prescaler);
-    timerSetAlarmValue(timer, timerInterval);
-    timerAlarm(timer, true);
+    timerAttachInterrupt(timer, &onTimer, true);
+    timerAlarmWrite(timer, TIMER_INTERVAL, true);
+    timerAlarmEnable(timer);
 
     // Initialize display
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {

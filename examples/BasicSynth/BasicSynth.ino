@@ -16,15 +16,6 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}/void setupTimer() {
-    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-    timerAttachInterrupt(timer, &onTimer, true);
-    timerAlarmWrite(timer, TIMER_INTERVAL, true);
-    timerAlarmEnable(timer);
 } void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
@@ -98,15 +89,6 @@ void setupTimer() {
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
 }svoid setupTimer() {
-    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-    timerAttachInterrupt(timer, &onTimer, true);
-    timerAlarmWrite(timer, TIMER_INTERVAL, true);
-    timerAlarmEnable(timer);
-}/void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -197,15 +179,6 @@ void setupTimer() {
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
 }hvoid setupTimer() {
-    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-    timerAttachInterrupt(timer, &onTimer, true);
-    timerAlarmWrite(timer, TIMER_INTERVAL, true);
-    timerAlarmEnable(timer);
-}/void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
