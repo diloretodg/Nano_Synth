@@ -1,3 +1,6 @@
+#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
 void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
@@ -7,7 +10,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}/void setupTimer() {
+}/#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -16,7 +22,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}/void setupTimer() {
+}/#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -25,7 +34,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-} void setupTimer() {
+} #include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -34,7 +46,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}evoid setupTimer() {
+}e#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -43,7 +58,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}xvoid setupTimer() {
+}x#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -52,7 +70,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}avoid setupTimer() {
+}a#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -61,7 +82,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}mvoid setupTimer() {
+}m#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -70,7 +94,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}pvoid setupTimer() {
+}p#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -79,7 +106,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}lvoid setupTimer() {
+}l#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -88,7 +118,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}evoid setupTimer() {
+}e#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -97,7 +130,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}svoid setupTimer() {
+}s#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -106,7 +142,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}/void setupTimer() {
+}/#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -115,7 +154,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}Bvoid setupTimer() {
+}B#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -124,7 +166,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}avoid setupTimer() {
+}a#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -133,7 +178,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}svoid setupTimer() {
+}s#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -142,7 +190,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}ivoid setupTimer() {
+}i#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -151,7 +202,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}cvoid setupTimer() {
+}c#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -160,7 +214,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}Svoid setupTimer() {
+}S#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -169,7 +226,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}yvoid setupTimer() {
+}y#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -178,7 +238,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}nvoid setupTimer() {
+}n#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -187,7 +250,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}tvoid setupTimer() {
+}t#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -196,7 +262,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}hvoid setupTimer() {
+}h#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -205,7 +274,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}/void setupTimer() {
+}/#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -214,7 +286,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}Bvoid setupTimer() {
+}B#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -223,7 +298,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}avoid setupTimer() {
+}a#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -232,7 +310,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}svoid setupTimer() {
+}s#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -241,7 +322,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}ivoid setupTimer() {
+}i#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -250,7 +334,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}cvoid setupTimer() {
+}c#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -259,7 +346,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}Svoid setupTimer() {
+}S#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -268,7 +358,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}yvoid setupTimer() {
+}y#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -277,7 +370,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}nvoid setupTimer() {
+}n#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -286,7 +382,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}tvoid setupTimer() {
+}t#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -295,7 +394,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}hvoid setupTimer() {
+}h#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -304,7 +406,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}.void setupTimer() {
+}.#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -313,7 +418,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}ivoid setupTimer() {
+}i#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -322,7 +430,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}nvoid setupTimer() {
+}n#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -331,7 +442,10 @@ void setupTimer() {
     timerAttachInterrupt(timer, &onTimer, true);
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
-}ovoid setupTimer() {
+}o#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
+void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
         Serial.println("Timer setup failed");
@@ -341,6 +455,9 @@ void setupTimer() {
     timerAlarmWrite(timer, TIMER_INTERVAL, true);
     timerAlarmEnable(timer);
 }
+#include "../../include/Constants.h"
+hw_timer_t* timer = nullptr;
+
 void setupTimer() {
     timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
     if (timer == nullptr) {
