@@ -10,98 +10,23 @@
 #include "Definitions.h"
 #include "GenerativeSequencer.h"
 
-hw_timer_t* timer = nullptr;
-
-void setupDAC() {
-    dac_output_enable(DAC_CHANNEL_1);
-    dac_output_voltage(DAC_CHANNEL_1, 0);
-}
-
-void setupTimer() {
-    timer = timerBegin(0, 80, true);
-    timerAttachInterrupt(timer, &onTimer, true);
-    uint64_t alarmValue = 1000000 / SAMPLE_RATE;
-    timerAlarmWrite(timer, alarmValue, true);
-    timerAlarmEnable(timer);
-}
-
-void IRAM_ATTR onTimer() {
-    static portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
-    portENTER_CRITICAL_ISR(&timerMux);
-    
-    if (sequencer) {
-        float sample = sequencer->generateSample();
-        uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
-        dac_output_voltage(DAC_CHANNEL_1, dacValue);
-    }
-    
-    portEXIT_CRITICAL_ISR(&timerMux);
-}
-
 // Global objects
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 Encoder encoder(ENCODER_PIN_A, ENCODER_PIN_B);
-GenerativeSequencer* sequencer = nullptr;
 InterfaceMode currentMode = InterfaceMode::EDIT_SEQUENCE;
-
 // Global variables
-hw_timer_t* timer = nullptr;
+hw_timer_t* timer;
 volatile bool audioBufferReady = false;
 float audioBuffer[AUDIO_BUFFER_SIZE];
 size_t bufferIndex = 0;
 
-void setupDAC() {
-    dac_output_enable(DAC_CHANNEL_1);
-    dac_output_voltage(DAC_CHANNEL_1, 0);
-}
 
-void setupTimer() {
-    timer = timerBegin(TIMER_NUMBER, TIMER_DIVIDER, true);
-    timerAttachInterrupt(timer, &onTimer, true);
-    uint64_t alarmValue = TIMER_SCALE / SAMPLE_RATE;
-    timerAlarmWrite(timer, alarmValue, true);
-    timerAlarmEnable(timer);
-}
 
-void IRAM_ATTR onTimer() {
-    if (sequencer) {
-        float sample = sequencer->generateSample();
-        uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
-        dac_output_voltage(DAC_CHANNEL_1, dacValue);
-    }
-}
-
-#include "include/Constants.h"
-
-hw_timer_t* timer = nullptr;
-
-void setupTimer() {
-    timer = timerBegin(TIMER_GROUP, TIMER_DIVIDER, true);
-    if (timer == nullptr) {
-        Serial.println("Timer setup failed");
-        return;
-    }
-    timerAttachInterrupt(timer, &onTimer, true);
-    timerAlarmWrite(timer, TIMER_INTERVAL, true);
-    timerAlarmEnable(timer);
-}
-
-void IRAM_ATTR onTimer() {
-    static portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
-    portENTER_CRITICAL_ISR(&timerMux);
-
-    if (sequencer) {
-        float sample = sequencer->generateSample();
-        uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
-        dac_output_voltage(DAC_CHANNEL_1, dacValue);
-    }
-
-    portEXIT_CRITICAL_ISR(&timerMux);
-}
+GenerativeSequencer *sequencer;
 
 void setup() {
     Serial.begin(115200);
-    setupDAC();
+   
     setupTimer();
 
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
@@ -117,7 +42,7 @@ void setup() {
     pinMode(ENCODER_BUTTON, INPUT_PULLUP);
 
     // Initialize sequencer
-    sequencer = new GenerativeSequencer(display);
+    GenerativeSequencer *sequencer;
     sequencer->start();
 }
 
@@ -215,4 +140,23 @@ void drawEvolutionEdit() {
     display.setCursor(0,0);
     display.println(F("Evolution Edit"));
     // Add more visualization code here
+}
+
+
+void setupTimer() {
+    timer = timerBegin(TIMER_DIVIDER);
+    if (timer == nullptr) {
+        Serial.println("Timer setup failed");
+        return;
+    }
+}
+
+void IRAM_ATTR onTimer() {
+    static portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
+    portENTER_CRITICAL_ISR(&timerMux);
+    if (sequencer) {
+        float sample = sequencer->generateSample();
+        uint8_t dacValue = static_cast<uint8_t>((sample + 1.0f) * 127.5f);
+    }
+    portEXIT_CRITICAL_ISR(&timerMux);
 }
