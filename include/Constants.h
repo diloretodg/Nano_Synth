@@ -18,9 +18,12 @@ constexpr float MAX_FREQUENCY = 20000.0f;
 constexpr float SEMITONE_RATIO = 1.059463094359f;
 
 // Hardware Constants
-constexpr uint8_t ENCODER_PIN_A = 32;
-constexpr uint8_t ENCODER_PIN_B = 33;
-constexpr uint8_t ENCODER_BUTTON = 34;
+constexpr uint8_t ENCODER_PIN_A = 2;    // Digital pin D2
+constexpr uint8_t ENCODER_PIN_B = 3;    // Digital pin D3  
+constexpr uint8_t ENCODER_BUTTON = 4;   // Digital pin D4
+constexpr uint8_t OLED_SDA = A4;        // Keep OLED on A4/GPIO21
+constexpr uint8_t OLED_SCL = A5;        // Keep OLED on A5/GPIO22
+constexpr uint8_t AUDIO_OUT = A1;       // Keep audio on A1/GPIO25/DAC1
 // Use the proper DAC channel enum
 #define DAC_CHANNEL DAC_CHANNEL_1
 // Make sure these match your ESP32 board's DAC channels
